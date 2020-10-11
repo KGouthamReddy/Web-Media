@@ -1,0 +1,271 @@
+index.jsx
+
+import React from 'react'
+import ReactDOM from 'react-dom'
+import './index.css'
+import App from './App.jsx'
+
+
+ReactDOM.render(
+   <App/>
+,document.getElementById('root')
+
+-------------------------------------------------------------------------------------
+
+Card.jsx
+
+
+import React from 'react'
+import Images from './Images.jsx'
+function Card(props){
+    //console.log(props);
+    return( <>
+    
+    <div className="cards">
+    <div className="card">
+    <Images imgsrc={props.imgsrc}/>
+    <div className="card__info">
+    <span className="card__category">{props.title} </span>
+    <h3 className="card__title"> {props.sname} </h3>
+    <a href={props.link} target="_blank">
+        <button> Watch Now </button>
+    </a>
+    </div>
+    </div>
+    </div>
+    </>
+    );
+}
+export default Card;
+
+--------------------------------------------------------------------------------------
+App.jsx
+
+import React from 'react'
+import Netflix from './Net'
+import Amazon from './Amazon'
+
+const favSries = "netflix";
+
+
+
+
+const App = () => (
+    <>
+     <h1 className="heading_style"> List of top  WEB series all the time<br/>
+     <span>
+     &copy;Goutham Reddy
+     </span> </h1>
+     {/*<FavS/>*/}
+     {(favSries=='netflix')?<Netflix/>:<Amazon/> }
+
+
+      
+     </>
+
+);
+export default App;
+
+--------------------------------------------------------------------------------------
+
+Images.jsx
+
+import React from 'react';
+
+const Images = (props) => {
+    return <img src={props.imgsrc} alt="myPic" className="card__img"/>
+};
+
+export default Images;
+
+
+--------------------------------------------------------------------------------------
+index.css
+
+*{
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  background-color: #d2dbdd;
+  
+}
+.span{
+  color: red;
+}
+
+.heading_style{
+  padding: 30px 0;
+  text-align: center;
+  font-family: "Raleway",sans-serif;
+  text-transform: uppercase;
+  font-size: 13px;
+  letter-spacing: 2px;
+  font-weight: 500;
+  color: #868686;
+  background-color: #fff;
+  font-size: 1.5rem;
+  margin-bottom: 30px;
+
+}
+.cards{
+  width: 100%;
+  height: auto;
+
+}
+.card{
+  /*margin: 25px; */
+  margin: 6%;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0, 1);
+  background-color: #fff;
+  width: 21.25%;
+  border-radius: 12px;
+  box-shadow: 0px 13px 10px -7px rgba(0,0,0,0.1);
+  float:left;
+
+}
+.card:hover{
+  box-shadow: 0px 30px 18px -8px rgba(0,0,0,0.1);
+  transform: scale(1.05,1.05);
+
+}
+.card__img{
+  width: 100%;
+  height: 235px;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+}
+.card__info{
+  background-color: #fff;
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+  padding: 16px 24px 24px 24px;
+  background-color: #fff;
+}
+.card__category{
+  font-family: "Raleway"sans-serif;
+  text-transform: uppercase;
+  font-size: 13px;
+  letter-spacing: 2px;
+  font-weight: 500;
+  color: #868686;
+  background-color: #fff;
+
+}
+.card_title{
+  margin-top: 5px;
+  margin-bottom: 10px;
+  font-family: "Raleway",sans-serif;
+  background-color: #fff;
+  text-transform: capitalize;
+}
+button{
+  padding: 5px 8px;
+  font-family: "Raleway",sans-serif;
+  text-transform: uppercase;
+  font-size: 13px;
+  letter-spacing: 2px;
+  font-weight: 500;
+  color: #868686;
+  background-color: #fff;
+  outline: none;
+  border: 1px solid black;
+  cursor: pointer;
+}
+
+
+--------------------------------------------------------------------------------------
+
+Sdata.jsx
+
+
+const Sdata = [
+    {
+        id:1,
+        sname: "DARK",
+        imgsrc: "https://images-na.ssl-images-amazon.com/images/I/81oWDX24u%2BL._SL1200_.jpg",
+        title: "Netflix Original Series",
+        links: "https://www.netflix.com/in/title/80100172",
+    },
+    {
+        id:2,
+        sname: "BREAKING BAD",
+        imgsrc: "https://th.bing.com/th/id/OIP.w2kFGhFOf3c9px521cmGowHaHa?w=181&h=181&c=7&o=5&dpr=1.25&pid=1.7",
+        title: "Netflix Original Series",
+        links: "https://www.netflix.com/in/Title/70143836",
+    },
+    {
+        id:3,
+        sname: "STRANGER THINGS",
+        imgsrc: "https://wallpapercave.com/wp/wp5913975.jpg",
+        title: "Netflix Original Series",
+        links: "https://www.netflix.com/in/Title/80199393",
+    },
+    {
+        id:4,
+        sname: "MARVEL THE PUNISHER",
+        imgsrc: "https://th.bing.com/th/id/OIP.cw-y_eBPqwVT1T-s43XieQHaEK?w=319&h=180&c=7&o=5&dpr=1.25&pid=1.7",
+        title: "Netflix Original Series",
+        links: "https://www.netflix.com/in/title/80117498",
+    },
+    {
+        id:5,
+        sname: "DARE DEVIL",
+        imgsrc: "https://wallpapercave.com/wp/wp1917128.jpg",
+        title: "Netflix Original Series",
+        links: "https://www.netflix.com/title/80018294",
+    },
+]
+export default Sdata;
+
+
+--------------------------------------------------------------------------------------
+
+Amazon.jsx
+
+
+import React from 'react';
+import Sdata from './Sdata.jsx'
+import Card from './Card.jsx'
+
+
+const Amazon = () =>{
+
+return(
+    <Card 
+        key={Sdata[3].id}
+        imgsrc={Sdata[3].imgsrc}
+        title={Sdata[3].title}
+        sname = {Sdata[3].sname}
+        link = {Sdata[3].links}
+       />
+   )
+}
+export default Amazon;
+
+--------------------------------------------------------------------------------------
+Net.jsx
+
+
+
+import React from 'react';
+import Sdata from './Sdata.jsx'
+import Card from './Card.jsx'
+
+
+const Netflix = () =>{
+
+return(
+    <Card 
+    key={Sdata[1].id}
+    imgsrc={Sdata[1].imgsrc}
+    title={Sdata[1].title}
+    sname = {Sdata[1].sname}
+    link = {Sdata[1].links}
+   />
+   )
+}
+export default Netflix;
+
+
+
+
